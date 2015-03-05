@@ -56,8 +56,8 @@ public:
     void rotate(float angle);
     
     void resetTransform();
-    glm::mat4 getCompleteTransform();
-    glm::mat4 setParentToWorldTransform(glm::mat4 M);
+    inline glm::mat4 getCompleteTransform(){ return _parentToWorldTransform*_transform; };
+    inline void setParentToWorldTransform(glm::mat4 M){ _parentToWorldTransform = M; };
     
     inline void setZDepth(int zDepth){ _zDepth = zDepth; };
     inline int getZDepth(){ return _zDepth; };
