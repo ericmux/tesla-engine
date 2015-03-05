@@ -7,3 +7,16 @@
 //
 
 #include "Sprite.h"
+
+
+namespace tesla {
+
+RenderCommand Sprite::parseToRenderCommand(){
+    RenderCommand cmd = Node::parseToRenderCommand();
+    cmd.targetTexture = _texture;
+
+    return cmd;
+};
+
+
+};

@@ -21,7 +21,7 @@ private:
     Texture* _texture;
     
 public:
-    //Convert to RenderCommand. Needs proper UV coordinates.
+    //Convert to RenderCommand.
     RenderCommand parseToRenderCommand();
 
 };

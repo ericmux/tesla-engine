@@ -56,6 +56,58 @@ void Node::addChild(Node *child){
 
 };
 
+void Node::removeChild(Node* child){
+
+    assert(child != nullptr);
+    
+    auto it = std::find(_children.begin(), _children.end(), child);
+
+    if(it != _children.end()){
+        std::cout << "There is no such child." << std::endl;
+    }
+    
+    _children.erase(it);
+    
+    child->setParent(nullptr);
+    child->setParentToWorldTransform(glm::mat4());
+
+};
+
+void Node::removeChildAt(int idx){
+    removeChild(_children[idx]);
+};
+
+void Node::removeFromParent(){
+    
+    if(_parent == nullptr) return;
+    
+    _parent->removeChild(this);
+
+};
+
+RenderCommand Node::parseToRenderCommand(){
+    RenderCommand cmd;
+    
+    float vtx[4*8] = {
+        0.0f,   0.0f,       _color.r, _color.g, _color.b,  _color.a,    0.0f,1.0f,
+        0.0f,   _height,    _color.r, _color.g, _color.b,  _color.a,    0.0f,0.0f,
+        _width, _height,    _color.r, _color.g, _color.b,  _color.a,    1.0f,0.0f,
+        _width, 0.0f,       _color.r, _color.g, _color.b,  _color.a,    1.0f,1.0f
+    };
+    
+    GLuint idxs[2*3] = {
+        0,1,2,
+        0,2,3
+    };
+    
+    cmd.targetTexture = nullptr;
+    
+    cmd.bufferVBO = std::vector<float>(vtx, vtx + sizeof(vtx)/sizeof(float));
+    cmd.bufferEBO = std::vector<GLuint>(idxs, idxs + sizeof(idxs)/sizeof(GLuint));
+    
+    return cmd;
+};
+
 
 
 
