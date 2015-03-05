@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		606F70C91A8C1A3500DBB5F0 /* RenderEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60802F711A60663100F27F70 /* RenderEngine.cpp */; };
-		606F70CA1A8C1A3500DBB5F0 /* RenderEngine.h in Sources */ = {isa = PBXBuildFile; fileRef = 60802F721A60663100F27F70 /* RenderEngine.h */; };
+		606F70C91A8C1A3500DBB5F0 /* RenderTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60802F711A60663100F27F70 /* RenderTest.cpp */; };
+		606F70CA1A8C1A3500DBB5F0 /* RenderTest.h in Sources */ = {isa = PBXBuildFile; fileRef = 60802F721A60663100F27F70 /* RenderTest.h */; };
 		60802F6F1A6063EB00F27F70 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60802AC11A60585C00F27F70 /* main.cpp */; };
 		60802F761A606FA600F27F70 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60802F741A606FA600F27F70 /* Cocoa.framework */; };
 		60802F771A606FA600F27F70 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60802F751A606FA600F27F70 /* IOKit.framework */; };
@@ -1115,8 +1115,8 @@
 		60802F1A1A60585F00F27F70 /* joff_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = joff_pic.jpg; sourceTree = "<group>"; };
 		60802F1B1A60585F00F27F70 /* octobiwan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = octobiwan.jpg; sourceTree = "<group>"; };
 		60802F681A60628000F27F70 /* teslario */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = teslario; sourceTree = BUILT_PRODUCTS_DIR; };
-		60802F711A60663100F27F70 /* RenderEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderEngine.cpp; sourceTree = "<group>"; };
-		60802F721A60663100F27F70 /* RenderEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderEngine.h; sourceTree = "<group>"; };
+		60802F711A60663100F27F70 /* RenderTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderTest.cpp; sourceTree = "<group>"; };
+		60802F721A60663100F27F70 /* RenderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTest.h; sourceTree = "<group>"; };
 		60802F741A606FA600F27F70 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		60802F751A606FA600F27F70 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		60802F781A606FC100F27F70 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -1182,8 +1182,6 @@
 		606F70C71A8C18A600DBB5F0 /* render */ = {
 			isa = PBXGroup;
 			children = (
-				60802F711A60663100F27F70 /* RenderEngine.cpp */,
-				60802F721A60663100F27F70 /* RenderEngine.h */,
 				60803CA21A99CB3800528622 /* Renderer.h */,
 				60803CA31A99CBD800528622 /* Renderer.cpp */,
 				60803CA91AA4EDB100528622 /* Texture.cpp */,
@@ -2611,6 +2609,7 @@
 		60802F701A60663100F27F70 /* tesla */ = {
 			isa = PBXGroup;
 			children = (
+				608800F31AA8FB500048010E /* test */,
 				60803C921A9996FD00528622 /* scene */,
 				606F70C71A8C18A600DBB5F0 /* render */,
 				606F70C81A8C18CE00DBB5F0 /* tesla.h */,
@@ -2641,6 +2640,15 @@
 				60803CB61AA6205D00528622 /* Sprite.h */,
 			);
 			name = scene;
+			sourceTree = "<group>";
+		};
+		608800F31AA8FB500048010E /* test */ = {
+			isa = PBXGroup;
+			children = (
+				60802F711A60663100F27F70 /* RenderTest.cpp */,
+				60802F721A60663100F27F70 /* RenderTest.h */,
+			);
+			name = test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2703,8 +2711,8 @@
 				60803CB41AA6205500528622 /* Node.cpp in Sources */,
 				60803CB71AA6205D00528622 /* Sprite.cpp in Sources */,
 				60803CB11AA61D4100528622 /* Scene.cpp in Sources */,
-				606F70C91A8C1A3500DBB5F0 /* RenderEngine.cpp in Sources */,
-				606F70CA1A8C1A3500DBB5F0 /* RenderEngine.h in Sources */,
+				606F70C91A8C1A3500DBB5F0 /* RenderTest.cpp in Sources */,
+				606F70CA1A8C1A3500DBB5F0 /* RenderTest.h in Sources */,
 				60802F881A6084E200F27F70 /* image_DXT.c in Sources */,
 				60802F891A6084E200F27F70 /* image_helper.c in Sources */,
 				60803CA81A99DA1E00528622 /* Director.cpp in Sources */,

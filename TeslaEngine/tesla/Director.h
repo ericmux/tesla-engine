@@ -25,8 +25,7 @@ class Director{
         GLFWwindow* _mainWindow;
         std::string _gameName;
         Scene* _currentScene;
-    
-        
+        float _animationInterval;
     
         Director();
     
@@ -45,11 +44,11 @@ class Director{
         //Initializes GLFW with a default window size of 1440x900.
         void initOpenGL();
     
+        //Names the rendering window.
         void setGameName(std::string& name);
     
-    
-    
-    
+        //Start rendering.
+        void run();
 
 };
 

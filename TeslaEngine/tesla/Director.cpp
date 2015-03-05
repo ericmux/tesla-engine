@@ -26,6 +26,7 @@ static Director* _sharedDirector = nullptr;
 Director::Director(){
     _renderer = Renderer::getInstance();
     _mainWindow = nullptr;
+    _animationInterval = 1/60.0f;
 };
   
   
@@ -54,6 +55,11 @@ void Director::initOpenGL(int width,  int height){
         exit(EXIT_FAILURE);
     }
     glfwMakeContextCurrent(_mainWindow);
+    
+    //Adjust viewPort size.
+    int w,h;
+    glfwGetFramebufferSize(_mainWindow, &w, &h);
+    glViewport(0, 0, w, h);
 
 };
 
@@ -66,6 +72,60 @@ void Director::setGameName(std::string& name){
     
     glfwSetWindowTitle(_mainWindow, name.c_str());
     _gameName = name;
+};
+
+
+//vbo data.
+float vs1[] = {
+    0.5f,   0.5f,   1.0f,0.0f,0.0f,  1.0f,1.0f,
+    0.5f,   -0.5f,  0.0f,1.0f,0.0f,  1.0f,0.0f,
+    -0.5f,   0.5f,  0.0f,0.0f,1.0f,  0.0f,1.0f,
+    -0.5f,  -0.5f,  1.0f,1.0f,1.0f,  0.0f,0.0f
+};
+
+float vs2[] = {
+    0.5f,   -0.5f,   1.0f,0.0f,0.0f,  1.0f,1.0f,
+    0.5f,   -1.0f,  0.0f,1.0f,0.0f,  1.0f,0.0f,
+    0.0f,   -0.5f,  0.0f,0.0f,1.0f,  0.0f,1.0f,
+    0.0f,  -1.0f,  1.0f,1.0f,1.0f,  0.0f,0.0f
+};
+
+//ebo data.
+GLuint es[] = {
+    0,2,1,
+    2,3,1
+};
+
+
+void Director::run(){
+
+    Texture* tex1 = new tesla::Texture("TeslaEngine/test/textures/octobiwan.jpg");
+    Texture* tex2 = new tesla::Texture("TeslaEngine/test/textures/joff_pic.jpg");
+
+    std::queue<RenderCommand> queue;
+    RenderCommand octCmd, joffCmd;
+    
+    octCmd.targetTexture = tex1;
+    octCmd.bufferVBO = std::vector<float>(vs1, vs1 + sizeof(vs1)/sizeof(float));
+    octCmd.bufferEBO = std::vector<GLuint>(es, es + sizeof(es)/sizeof(GLuint));
+    
+    
+    joffCmd.targetTexture = tex2;
+    joffCmd.bufferVBO = std::vector<float>(vs2, vs2 + sizeof(vs2)/sizeof(float));
+    joffCmd.bufferEBO = std::vector<GLuint>(es, es + sizeof(es)/sizeof(GLuint));
+    
+    queue.push(octCmd);
+    queue.push(joffCmd);
+    
+
+    while (!glfwWindowShouldClose(_mainWindow)){
+
+        _renderer->render(queue);
+    
+        glfwSwapBuffers(_mainWindow);
+        glfwPollEvents();
+    }
+
 };
   
   

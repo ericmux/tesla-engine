@@ -1,6 +1,6 @@
 #version 410
 
-in vec3 Color;
+in vec4 Color;
 in vec2 fUV;
 
 out vec4 outColor;

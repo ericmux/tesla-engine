@@ -59,7 +59,7 @@ void check_compile_status(GLuint shader){
 }
 
 
-void Renderer::compile_shaders(){
+void Renderer::compileShaders(){
 
     pcwd();
 
@@ -132,7 +132,7 @@ Renderer::Renderer(){
     
     
     //shaders.
-    compile_shaders();
+    compileShaders();
     glLinkProgram(_shaderProgram);
     glUseProgram(_shaderProgram);
     
@@ -177,6 +177,31 @@ Renderer* Renderer::getInstance(){
     }
     
     return _sharedRenderer;
+
+};
+
+
+void Renderer::render(std::queue<RenderCommand>& cmdQueue){
+    
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+    glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
+    
+    
+    while(!cmdQueue.empty()){
+        RenderCommand cmd = cmdQueue.front();
+        cmdQueue.pop();
+        
+        //Draw from render command.
+        if(cmd.targetTexture != nullptr) cmd.targetTexture->activate();
+        
+        glBindBuffer(GL_ARRAY_BUFFER, _VBO);
+        glBufferData(GL_ARRAY_BUFFER, cmd.bufferVBO.size()*sizeof(float), cmd.bufferVBO.data(), GL_DYNAMIC_DRAW);
+        
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, cmd.bufferEBO.size()*sizeof(GLuint), cmd.bufferEBO.data(), GL_DYNAMIC_DRAW);
+        
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    }
 
 };
 

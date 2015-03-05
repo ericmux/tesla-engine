@@ -9,6 +9,9 @@
 #ifndef TeslaEngine_Renderer_h
 #define TeslaEngine_Renderer_h
 
+#include <queue>
+#include "RenderCommand.h"
+
 namespace tesla {
   
 class Renderer {
@@ -24,11 +27,14 @@ class Renderer {
         Renderer();
         void operator=(Renderer const&);
     
-        void compile_shaders();
+        void compileShaders();
       
       
     public:
         static Renderer* getInstance();
+    
+        //Render a frame based on geometry defined by render commands.
+        void render(std::queue<RenderCommand>& cmdQueue);
       
     
 

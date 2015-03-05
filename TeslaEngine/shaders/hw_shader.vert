@@ -1,10 +1,10 @@
 #version 410
 
 in vec2 position;
-in vec3 color;
+in vec4 color;
 in vec2 vUV;
 
-out vec3 Color;
+out vec4 Color;
 out vec2 fUV;
 
 uniform mat4 rot;

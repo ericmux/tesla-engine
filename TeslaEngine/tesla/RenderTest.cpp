@@ -1,4 +1,4 @@
-#include "RenderEngine.h"
+#include "RenderTest.h"
 
 #include <unistd.h>
 #include <errno.h>
@@ -149,7 +149,7 @@ void check_compile_status(GLuint shader){
 }
 
 
-void compile_shaders(){
+void compileShaders(){
 
     pcwd();
 
@@ -258,7 +258,7 @@ int init_opengl(int argc, char **argv) {
     }
     
     //shaders.
-    compile_shaders();
+    compileShaders();
     glLinkProgram(shaderProgram);
     glUseProgram(shaderProgram);
     

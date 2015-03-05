@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4DD269AD-B970-412D-93B6-D951B41A954D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TeslaEngine</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A376A7D3F433B4FD4C2364F236B3040CBA084662</key>
+		<string>https://github.com/ericmux/tesla-engine.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TeslaEngine.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A376A7D3F433B4FD4C2364F236B3040CBA084662</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ericmux/tesla-engine.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>A376A7D3F433B4FD4C2364F236B3040CBA084662</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A376A7D3F433B4FD4C2364F236B3040CBA084662</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TeslaEngine</string>
+		</dict>
+	</array>
+</dict>
+</plist>
