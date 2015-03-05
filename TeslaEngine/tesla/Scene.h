@@ -11,11 +11,13 @@
 
 #include <stdio.h>
 
+#include "Node.h"
+
 
 namespace tesla {
   
 
-class Scene : public Node{
+class Scene : public Node {
  private:
     
 

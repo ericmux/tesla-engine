@@ -53,9 +53,11 @@ public:
     //Methods for local transformation definition.
     void setScale(float s);
     void translate(glm::vec3 t);
-    void rotate(float radians);
+    void rotate(float angle);
     
     void resetTransform();
+    glm::mat4 getCompleteTransform();
+    glm::mat4 setParentToWorldTransform(glm::mat4 M);
     
     inline void setZDepth(int zDepth){ _zDepth = zDepth; };
     inline int getZDepth(){ return _zDepth; };
@@ -68,6 +70,9 @@ public:
     
     inline void setColor(float r, float g, float b, float a){ _color = glm::vec4(r,g,b,a); };
     inline glm::vec4 getColor(){ return glm::vec4(_color); };
+    
+    inline void setParent(Node* parent){ _parent = parent; };
+    inline Node* getParent(){ return _parent; };
     
     //Debug draw. A colored quad will be drawn to represent the node.
     inline void setDebugDraw(bool debugDraw){ _debugDraw = debugDraw; };

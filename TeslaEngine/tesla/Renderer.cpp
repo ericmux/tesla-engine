@@ -146,17 +146,17 @@ Renderer::Renderer(){
     //pos attribute.
     GLuint posAttrib = glGetAttribLocation(_shaderProgram, "position");
     glEnableVertexAttribArray(posAttrib);
-    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 7*sizeof(float), 0);
+    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 8*sizeof(float), 0);
     
     //Color attribute.
     GLuint colorAttrib = glGetAttribLocation(_shaderProgram, "color");
     glEnableVertexAttribArray(colorAttrib);
-    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, 7*sizeof(float), (void*) (2*sizeof(float)));
+    glVertexAttribPointer(colorAttrib, 4, GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*) (2*sizeof(float)));
     
     //Texcoord atrribute.
     GLuint texAttrib = glGetAttribLocation(_shaderProgram, "vUV");
     glEnableVertexAttribArray(texAttrib);
-    glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 7*sizeof(float), (void*) (5*sizeof(float)));
+    glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*) (6*sizeof(float)));
     
     
     err = glGetError();
