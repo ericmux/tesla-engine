@@ -22,16 +22,18 @@
 
 #include <vector>
 
+#include "RenderCommand.h"
+
 
 
 
 namespace tesla {
 
 class Node {
-private:
+protected:
     glm::mat4 _parentToWorldTransform;
     glm::mat4 _transform;
-    glm::vec3 _color;
+    glm::vec4 _color;
     
     int _zDepth;
     float _width;
@@ -64,23 +66,23 @@ public:
     inline void setHeight(float h){ _height = h; };
     inline float getHeight(){ return _height; };
     
-    inline void setColor(float r, float g, float b);
-    inline glm::vec3 getColor(){ return glm::vec3(_color); };
+    inline void setColor(float r, float g, float b, float a){ _color = glm::vec4(r,g,b,a); };
+    inline glm::vec4 getColor(){ return glm::vec4(_color); };
     
     //Debug draw. A colored quad will be drawn to represent the node.
     inline void setDebugDraw(bool debugDraw){ _debugDraw = debugDraw; };
     
+    //Tree methods.
+    void addChild(Node* child);
+    
+    void removeChild(Node* child);
+    void removeChildAt(int idx);
+    
+    void removeFromParent();
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-
+    //Convert to RenderCommand.
+    RenderCommand parseToRenderCommand();
 
 
 };

@@ -11,7 +11,23 @@
 
 #include <stdio.h>
 
+#include "Node.h"
+#include "Texture.h"
 
+namespace tesla {
+
+class Sprite : public Node {
+private:
+    Texture* _texture;
+    
+public:
+    //Convert to RenderCommand. Needs proper UV coordinates.
+    RenderCommand parseToRenderCommand();
+
+};
+
+
+};
 
 
 #endif

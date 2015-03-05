@@ -20,18 +20,10 @@
 namespace tesla {
 
 class RenderCommand {
-    private:
-        Texture *_targetTexture;
-        std::vector<float>  _bufferVBO;
-        std::vector<GLuint> _bufferEBO;
-    
-    
-    
-    
-
-
-
-
+    public:
+        Texture *targetTexture;
+        std::vector<float>  bufferVBO;
+        std::vector<GLuint> bufferEBO;
 };
 
 };
