@@ -9,6 +9,19 @@
 #ifndef TeslaEngine_tesla_h
 #define TeslaEngine_tesla_h
 
+#include "Director.h"
+
+//render
+#include "Renderer.h"
+#include "Texture.h"
+#include "RenderCommand.h"
+
+//scene
+#include "Scene.h"
+#include "Node.h"
+#include "Sprite.h"
+
+
 #include "RenderTest.h"
 
 

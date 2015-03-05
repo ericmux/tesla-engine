@@ -35,7 +35,7 @@ class Director{
         const int DEFAULT_WIDTH  = 1440;
         const int DEFAULT_HEIGHT = 900;
     
-        Director* getInstance();
+        static Director* getInstance();
         void operator=(Director const&);
     
         //Initializes GLFW with the specified window size.

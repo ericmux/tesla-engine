@@ -24,6 +24,7 @@ static Director* _sharedDirector = nullptr;
   
   
 Director::Director(){
+
     _renderer = Renderer::getInstance();
     _mainWindow = nullptr;
     _animationInterval = 1/60.0f;
