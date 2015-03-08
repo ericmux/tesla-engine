@@ -143,10 +143,19 @@ Renderer::Renderer(){
         std::cout << gluErrorString(err) << std::endl;
     }
     
+    //binding VBO/EBO so the VAO can tie it to the vertex attrib pointers. Cannot call glVertexAttribPointer without.
+    glBindBuffer(GL_ARRAY_BUFFER, _VBO);
+    glBufferData(GL_ARRAY_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
+    
+    
     //pos attribute.
     GLuint posAttrib = glGetAttribLocation(_shaderProgram, "position");
     glEnableVertexAttribArray(posAttrib);
     glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 8*sizeof(float), 0);
+    
     
     //Color attribute.
     GLuint colorAttrib = glGetAttribLocation(_shaderProgram, "color");
@@ -183,7 +192,7 @@ Renderer* Renderer::getInstance(){
 
 void Renderer::render(std::queue<RenderCommand>& cmdQueue){
     
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+    glClearColor(.0f, .0f, .0f, 1.0f); // Set background color to black and opaque
     glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
     
     
@@ -195,12 +204,22 @@ void Renderer::render(std::queue<RenderCommand>& cmdQueue){
         if(cmd.targetTexture != nullptr) cmd.targetTexture->activate();
         
         glBindBuffer(GL_ARRAY_BUFFER, _VBO);
-        glBufferData(GL_ARRAY_BUFFER, cmd.bufferVBO.size()*sizeof(float), cmd.bufferVBO.data(), GL_DYNAMIC_DRAW);
+        
+        
+//        glBufferData(GL_ARRAY_BUFFER, cmd.bufferVBO.size()*sizeof(float), cmd.bufferVBO.data(), GL_DYNAMIC_DRAW);
+        
+        
+        glBufferData(GL_ARRAY_BUFFER, cmd.bufferVBO.size()*sizeof(float), nullptr, GL_DYNAMIC_DRAW);
+        void *buf = glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+        memcpy(buf, cmd.bufferVBO.data(), cmd.bufferVBO.size()*sizeof(float));
+        glUnmapBuffer(GL_ARRAY_BUFFER);
+        
         
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _EBO);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, cmd.bufferEBO.size()*sizeof(GLuint), cmd.bufferEBO.data(), GL_DYNAMIC_DRAW);
         
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        
     }
 
 };

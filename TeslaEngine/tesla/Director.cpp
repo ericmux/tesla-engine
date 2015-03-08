@@ -9,6 +9,8 @@
 
 #include <cstdlib>
 #include <new>
+#include <chrono>
+#include <thread>
 
 #define GLFW_INCLUDE_GLCOREARB
 #include <OpenGL/glu.h>
@@ -25,9 +27,11 @@ static Director* _sharedDirector = nullptr;
   
 Director::Director(){
 
-    _renderer = Renderer::getInstance();
+    _renderer = nullptr;
     _mainWindow = nullptr;
-    _animationInterval = 1/60.0f;
+    _animationInterval = 1.0f/60.0f;
+    _width = 0;
+    _height = 0;
 };
   
   
@@ -57,6 +61,11 @@ void Director::initOpenGL(int width,  int height){
     }
     glfwMakeContextCurrent(_mainWindow);
     
+    _width = width;
+    _height = height;
+    
+    _renderer = Renderer::getInstance();
+    
     //Adjust viewPort size.
     int w,h;
     glfwGetFramebufferSize(_mainWindow, &w, &h);
@@ -78,17 +87,17 @@ void Director::setGameName(std::string& name){
 
 //vbo data.
 float vs1[] = {
-    0.5f,   0.5f,   1.0f,0.0f,0.0f,  1.0f,1.0f,
-    0.5f,   -0.5f,  0.0f,1.0f,0.0f,  1.0f,0.0f,
-    -0.5f,   0.5f,  0.0f,0.0f,1.0f,  0.0f,1.0f,
-    -0.5f,  -0.5f,  1.0f,1.0f,1.0f,  0.0f,0.0f
+    0.5f,   0.5f,   1.0f,0.0f,0.0f,1.0f,  1.0f,1.0f,
+    0.5f,   -0.5f,  0.0f,1.0f,0.0f,1.0f,  1.0f,0.0f,
+    -0.5f,   0.5f,  0.0f,0.0f,1.0f,1.0f,  0.0f,1.0f,
+    -0.5f,  -0.5f,  1.0f,1.0f,1.0f,1.0f,  0.0f,0.0f
 };
 
 float vs2[] = {
-    0.5f,   -0.5f,   1.0f,0.0f,0.0f,  1.0f,1.0f,
-    0.5f,   -1.0f,  0.0f,1.0f,0.0f,  1.0f,0.0f,
-    0.0f,   -0.5f,  0.0f,0.0f,1.0f,  0.0f,1.0f,
-    0.0f,  -1.0f,  1.0f,1.0f,1.0f,  0.0f,0.0f
+    0.5f,   -0.5f,   1.0f,0.0f,0.0f,1.0f,   1.0f,1.0f,
+    0.5f,   -1.0f,  0.0f,1.0f,0.0f,1.0f,    1.0f,0.0f,
+    0.0f,   -0.5f,  0.0f,0.0f,1.0f,1.0f,    0.0f,1.0f,
+    0.0f,  -1.0f,  1.0f,1.0f,1.0f,1.0f,     0.0f,0.0f
 };
 
 //ebo data.
@@ -115,14 +124,26 @@ void Director::run(){
     joffCmd.bufferVBO = std::vector<float>(vs2, vs2 + sizeof(vs2)/sizeof(float));
     joffCmd.bufferEBO = std::vector<GLuint>(es, es + sizeof(es)/sizeof(GLuint));
     
-    queue.push(octCmd);
-    queue.push(joffCmd);
-    
+
+    std::chrono::time_point<std::chrono::system_clock> start, end;
 
     while (!glfwWindowShouldClose(_mainWindow)){
+    
+        start = std::chrono::system_clock::now();
+    
+        queue.push(octCmd);
+        queue.push(joffCmd);
 
         _renderer->render(queue);
-    
+        
+        std::chrono::duration<double> sleepTime = std::chrono::system_clock::now() - start;
+        double dSleepTime = sleepTime.count();
+        
+        if(dSleepTime < _animationInterval){
+            long long usleep_time = 1000*(_animationInterval - dSleepTime);
+            std::this_thread::sleep_for(std::chrono::milliseconds(usleep_time));
+        }
+        
         glfwSwapBuffers(_mainWindow);
         glfwPollEvents();
     }

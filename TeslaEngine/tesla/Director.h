@@ -27,13 +27,16 @@ class Director{
         Scene* _currentScene;
         float _animationInterval;
     
+        int _width;
+        int _height;
+    
         Director();
     
     public:
     
         //Default screen dimensions in pixels.
-        const int DEFAULT_WIDTH  = 1440;
-        const int DEFAULT_HEIGHT = 900;
+        static const int DEFAULT_WIDTH  = 1440;
+        static const int DEFAULT_HEIGHT = 900;
     
         static Director* getInstance();
         void operator=(Director const&);
