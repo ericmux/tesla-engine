@@ -1123,7 +1123,6 @@
 		60802F861A60845F00F27F70 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = "TeslaEngine/external/glfw-3.0.4/build/libglfw3.a"; sourceTree = "<group>"; };
 		60803CA61A99DA1E00528622 /* Director.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = Director.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		60803CA71A99DA1E00528622 /* Director.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Director.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		60FC6E161AB0F13D0074B61F /* IKeyListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKeyListener.h; sourceTree = "<group>"; };
 		60FC6E171AB0F13D0074B61F /* IListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IListener.h; sourceTree = "<group>"; };
 		60FC6E181AB0F13D0074B61F /* KeyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyEvent.h; sourceTree = "<group>"; };
 		60FC6E1A1AB0F13D0074B61F /* RenderCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderCommand.cpp; sourceTree = "<group>"; };
@@ -2624,7 +2623,6 @@
 		60FC6E141AB0F13D0074B61F /* input */ = {
 			isa = PBXGroup;
 			children = (
-				60FC6E161AB0F13D0074B61F /* IKeyListener.h */,
 				60FC6E171AB0F13D0074B61F /* IListener.h */,
 				60FC6E181AB0F13D0074B61F /* KeyEvent.h */,
 				60FC6E311AB0F5ED0074B61F /* MouseCursorEvent.h */,

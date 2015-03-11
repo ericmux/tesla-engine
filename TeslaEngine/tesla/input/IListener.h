@@ -18,7 +18,7 @@ template <typename T>
 class IListener {
 public:
     virtual ~IListener(){};
-    virtual bool handleInput(T* event) = 0;
+    virtual bool handleInput(T event) = 0;
 
 };
 
