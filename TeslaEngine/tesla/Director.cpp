@@ -70,6 +70,8 @@ void Director::initOpenGL(int width,  int height){
     _height = h;
     
     
+    
+    
     //make viewPort matrix.
     float m[] = {
         2.0f/_width, 0.0f, 0.0f, -1.0f,

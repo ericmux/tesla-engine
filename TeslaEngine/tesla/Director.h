@@ -44,12 +44,16 @@ public:
     
     inline glm::mat4 getViewPortTransform(){ return glm::mat4(_viewPortTransform); };
 
+    inline int getDisplayWidthInPixels()   { return _width;  };
+    inline int getDisplayHeightInPixels()  { return _height; };
+    
+
     static Director* getInstance();
     void operator=(Director const&);
     
     inline void setCurrentScene(Scene* scene){ _currentScene = scene; };
 
-    //Initializes GLFW with the specified window size.
+    //Initializes GLFW with the specified window size (in GLFW screen coordinates).
     void initOpenGL(int width, int height);
 
     //Initializes GLFW with a default window size of 1440x900.

@@ -23,6 +23,9 @@ int main(int argc, const char * argv[]) {
     scene->addChild(sp1);
     scene->addChild(sp2);
     
+    w = director->getDisplayWidthInPixels();
+    h = director->getDisplayHeightInPixels();
+    
     sp1->translate(glm::vec3(w/2,h/2,0.0f));
     sp1->scale(0.5f, 0.3f, 1.0f);
     
