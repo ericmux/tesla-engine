@@ -23,9 +23,18 @@ Node::Node() :_zDepth(0), _width(0), _height(0), _parent(nullptr), _debugDraw(fa
 
 Node::~Node(){};
 
-void Node::setScale(float s){
+void Node::scale(float s){
     _transform = glm::scale(_transform, glm::vec3(s));
 };
+
+void Node::scale(float sx, float sy, float sz){
+    _transform = glm::scale(_transform, glm::vec3(sx,sy,sz));
+};
+
+void Node::scale(glm::vec3 s){
+    _transform = glm::scale(_transform, s);
+};
+
 
 void Node::translate(glm::vec3 t){
     _transform = glm::translate(_transform, t);

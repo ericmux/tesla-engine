@@ -51,7 +51,10 @@ public:
     ~Node();
     
     //Methods for local transformation definition.
-    void setScale(float s);
+    void scale(float s);
+    void scale(float sx, float sy, float sz);
+    void scale(glm::vec3 s);
+    
     void translate(glm::vec3 t);
     void rotate(float angle);
     

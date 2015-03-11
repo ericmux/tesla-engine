@@ -12,7 +12,6 @@ int main(int argc, const char * argv[]) {
     director->initOpenGL(w,h);
     
     
-    
     tesla::Texture* tex1 = new tesla::Texture("TeslaEngine/test/textures/octobiwan.jpg");
     tesla::Texture* tex2 = new tesla::Texture("TeslaEngine/test/textures/joff_pic.jpg");
     
@@ -25,7 +24,11 @@ int main(int argc, const char * argv[]) {
     scene->addChild(sp2);
     
     sp1->translate(glm::vec3(w/2,h/2,0.0f));
+    sp1->scale(0.5f, 0.3f, 1.0f);
+    
+    
     sp2->translate(glm::vec3(0.0f,h/2,0.0f));
+    sp2->scale(0.5f, 0.5f, 1.0f);
     
     director->setCurrentScene(scene);
     
