@@ -194,7 +194,7 @@ Renderer* Renderer::getInstance(){
 void Renderer::render(std::queue<RenderCommand>* cmdQueue){
     
     glClearColor(.0f, .0f, .0f, 1.0f); // Set background color to black and opaque
-    glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);         // Clear the color buffer/ depth buffer.
     
     
     while(!cmdQueue->empty()){
@@ -207,9 +207,7 @@ void Renderer::render(std::queue<RenderCommand>* cmdQueue){
         glBindBuffer(GL_ARRAY_BUFFER, _VBO);
         
         
-//        glBufferData(GL_ARRAY_BUFFER, cmd.bufferVBO.size()*sizeof(float), cmd.bufferVBO.data(), GL_DYNAMIC_DRAW);
-        
-        
+        //Orphaning + unmapping bizu demais.
         glBufferData(GL_ARRAY_BUFFER, cmd.bufferVBO.size()*sizeof(float), nullptr, GL_DYNAMIC_DRAW);
         void *buf = glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
         memcpy(buf, cmd.bufferVBO.data(), cmd.bufferVBO.size()*sizeof(float));
