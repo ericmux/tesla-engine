@@ -26,6 +26,7 @@
 		60FC6E2E1AB0F13D0074B61F /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6E231AB0F13D0074B61F /* Scene.cpp */; };
 		60FC6E2F1AB0F13D0074B61F /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6E251AB0F13D0074B61F /* Sprite.cpp */; };
 		60FC6E301AB0F13D0074B61F /* RenderTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6E281AB0F13D0074B61F /* RenderTest.cpp */; };
+		60FC6E351AB0FAE70074B61F /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60FC6E331AB0FAE70074B61F /* InputHandler.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1141,6 +1142,8 @@
 		60FC6E291AB0F13D0074B61F /* RenderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTest.h; sourceTree = "<group>"; };
 		60FC6E311AB0F5ED0074B61F /* MouseCursorEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseCursorEvent.h; sourceTree = "<group>"; };
 		60FC6E321AB0F7130074B61F /* MouseButtonEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseButtonEvent.h; sourceTree = "<group>"; };
+		60FC6E331AB0FAE70074B61F /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
+		60FC6E341AB0FAE70074B61F /* InputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2627,6 +2630,8 @@
 				60FC6E181AB0F13D0074B61F /* KeyEvent.h */,
 				60FC6E311AB0F5ED0074B61F /* MouseCursorEvent.h */,
 				60FC6E321AB0F7130074B61F /* MouseButtonEvent.h */,
+				60FC6E331AB0FAE70074B61F /* InputHandler.cpp */,
+				60FC6E341AB0FAE70074B61F /* InputHandler.h */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -2735,6 +2740,7 @@
 				60802F8B1A6084E200F27F70 /* stb_image_aug.c in Sources */,
 				60FC6E301AB0F13D0074B61F /* RenderTest.cpp in Sources */,
 				60802F8C1A6084E200F27F70 /* stbi_DDS_aug_c.h in Sources */,
+				60FC6E351AB0FAE70074B61F /* InputHandler.cpp in Sources */,
 				60802F6F1A6063EB00F27F70 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
