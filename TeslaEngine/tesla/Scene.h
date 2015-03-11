@@ -10,16 +10,24 @@
 #define __TeslaEngine__Scene__
 
 #include <stdio.h>
+#include <queue>
 
 #include "Node.h"
+#include "RenderCommand.h"
 
 
 namespace tesla {
   
 
 class Scene : public Node {
- private:
+private:
+
+
+public:
+    Scene();
     
+    //traverse convert all objects in the scene to render commands.
+    std::queue<RenderCommand> toDrawQueue();
 
 
 

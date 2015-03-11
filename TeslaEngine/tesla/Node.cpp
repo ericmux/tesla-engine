@@ -21,6 +21,8 @@ Node::Node() :_zDepth(0), _width(0), _height(0), _parent(nullptr), _debugDraw(fa
 
 };
 
+Node::~Node(){};
+
 void Node::setScale(float s){
     _transform = glm::scale(_transform, glm::vec3(s));
 };
@@ -85,14 +87,26 @@ void Node::removeFromParent(){
 
 };
 
-RenderCommand Node::parseToRenderCommand(){
+RenderCommand Node::toRenderCommand(){
     RenderCommand cmd;
     
-    float vtx[4*8] = {
-        0.0f,   0.0f,       _color.r, _color.g, _color.b,  _color.a,    0.0f,1.0f,
-        0.0f,   _height,    _color.r, _color.g, _color.b,  _color.a,    0.0f,0.0f,
-        _width, _height,    _color.r, _color.g, _color.b,  _color.a,    1.0f,0.0f,
-        _width, 0.0f,       _color.r, _color.g, _color.b,  _color.a,    1.0f,1.0f
+    glm::vec4 vtxs[4];
+    
+    vtxs[0]  = glm::vec4(0.0f,0.0f,0.0f,1.0f);
+    vtxs[1]  = glm::vec4(0.0f,_height,0.0f,1.0f);
+    vtxs[2]  = glm::vec4(_width,_height,0.0f,1.0f);
+    vtxs[3]  = glm::vec4(_width,0.0f,0.0f,1.0f);
+    
+    glm::mat4 M = _parentToWorldTransform*_transform;
+    for(auto& v: vtxs) v = M*v;
+    
+    
+    
+    float vtxs_ndc[4*8] = {
+        vtxs[0][0],   vtxs[0][1],       _color.r, _color.g, _color.b,  _color.a,    0.0f,1.0f,
+        vtxs[1][0],   vtxs[1][1],       _color.r, _color.g, _color.b,  _color.a,    0.0f,0.0f,
+        vtxs[2][0],   vtxs[2][1],       _color.r, _color.g, _color.b,  _color.a,    1.0f,0.0f,
+        vtxs[3][0],   vtxs[3][1],       _color.r, _color.g, _color.b,  _color.a,    1.0f,1.0f
     };
     
     GLuint idxs[2*3] = {
@@ -102,7 +116,7 @@ RenderCommand Node::parseToRenderCommand(){
     
     cmd.targetTexture = nullptr;
     
-    cmd.bufferVBO = std::vector<float>(vtx, vtx + sizeof(vtx)/sizeof(float));
+    cmd.bufferVBO = std::vector<float>(vtxs_ndc, vtxs_ndc + sizeof(vtxs_ndc)/sizeof(float));
     cmd.bufferEBO = std::vector<GLuint>(idxs, idxs + sizeof(idxs)/sizeof(GLuint));
     
     return cmd;

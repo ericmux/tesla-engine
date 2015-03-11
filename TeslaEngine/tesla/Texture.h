@@ -22,31 +22,30 @@
 namespace tesla {
 
 class Texture {
-    private:
-        GLuint  _name;
-        int     _height;
-        int     _width;
-        unsigned char*   _texels;
+private:
+    GLuint  _name;
+    int     _height;
+    int     _width;
+    unsigned char*   _texels;
+
+    void loadTexture();
+    void deleteTexture();
+
+
+
+public:
+    Texture(std::string fileName);
+    Texture(char* data);
+
+    ~Texture();
     
-        void loadTexture();
-        void deleteTexture();
-    
-    
-    
-    public:
-        Texture(std::string fileName);
-        Texture(char* data);
-    
-        ~Texture();
-    
-        void activate();
+    inline int height() { return _height; };
+    inline int width()  { return _width; };
+
+    void activate();
+};
 
 };
 
-  
-};
 
-
-
-
-#endif /* defined(__TeslaEngine__Texture__) */
+#endif

@@ -21,8 +21,11 @@ private:
     Texture* _texture;
     
 public:
+    Sprite(Texture* tex);
+
+
     //Convert to RenderCommand.
-    RenderCommand parseToRenderCommand();
+    RenderCommand toRenderCommand();
 
 };
 

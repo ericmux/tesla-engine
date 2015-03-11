@@ -11,8 +11,16 @@
 
 namespace tesla {
 
-RenderCommand Sprite::parseToRenderCommand(){
-    RenderCommand cmd = Node::parseToRenderCommand();
+
+Sprite::Sprite(Texture* tex) : Node() {
+    _texture    = tex;
+    _height     = _texture->height();
+    _width      = _texture->width();
+};
+
+
+RenderCommand Sprite::toRenderCommand(){
+    RenderCommand cmd = Node::toRenderCommand();
     cmd.targetTexture = _texture;
 
     return cmd;

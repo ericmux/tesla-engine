@@ -15,31 +15,27 @@
 namespace tesla {
   
 class Renderer {
-    private:
-        GLuint _VAO;
-        GLuint _vtxi;
-        GLuint _fragi;
-        GLuint _shaderProgram;
-    
-        GLuint _VBO;
-        GLuint _EBO;
-    
-        Renderer();
-        void operator=(Renderer const&);
-    
-        void compileShaders();
-      
-      
-    public:
-        static Renderer* getInstance();
-    
-        //Render a frame based on geometry defined by render commands.
-        void render(std::queue<RenderCommand>& cmdQueue);
-      
-    
+private:
+    GLuint _VAO;
+    GLuint _vtxi;
+    GLuint _fragi;
+    GLuint _shaderProgram;
 
+    GLuint _VBO;
+    GLuint _EBO;
 
+    Renderer();
+    void operator=(Renderer const&);
 
+    void compileShaders();
+  
+  
+public:
+    static Renderer* getInstance();
+
+    //Render a frame based on geometry defined by render commands.
+    void render(std::queue<RenderCommand>* cmdQueue);
+  
 };
   
   

@@ -85,9 +85,11 @@ public:
     
     void removeFromParent();
     
+    inline const std::vector<Node*>& getChildren(){ return _children; };
+    
     
     //Convert to RenderCommand.
-    RenderCommand parseToRenderCommand();
+    virtual RenderCommand toRenderCommand();
 
 
 };

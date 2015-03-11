@@ -143,7 +143,8 @@ Renderer::Renderer(){
         std::cout << gluErrorString(err) << std::endl;
     }
     
-    //binding VBO/EBO so the VAO can tie it to the vertex attrib pointers. Cannot call glVertexAttribPointer without.
+    //binding VBO/EBO so the VAO can tie it to the vertex attrib pointers. Cannot call glVertexAttribPointer before this or
+    //you get invalid operation.
     glBindBuffer(GL_ARRAY_BUFFER, _VBO);
     glBufferData(GL_ARRAY_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
     
@@ -190,15 +191,15 @@ Renderer* Renderer::getInstance(){
 };
 
 
-void Renderer::render(std::queue<RenderCommand>& cmdQueue){
+void Renderer::render(std::queue<RenderCommand>* cmdQueue){
     
     glClearColor(.0f, .0f, .0f, 1.0f); // Set background color to black and opaque
     glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
     
     
-    while(!cmdQueue.empty()){
-        RenderCommand cmd = cmdQueue.front();
-        cmdQueue.pop();
+    while(!cmdQueue->empty()){
+        RenderCommand cmd = cmdQueue->front();
+        cmdQueue->pop();
         
         //Draw from render command.
         if(cmd.targetTexture != nullptr) cmd.targetTexture->activate();
