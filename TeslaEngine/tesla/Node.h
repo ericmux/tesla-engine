@@ -45,6 +45,8 @@ protected:
 
     bool _debugDraw;
     
+    void updateChildTransforms();
+    
     
 public:
     Node();
@@ -60,7 +62,7 @@ public:
     
     void resetTransform();
     inline glm::mat4 getCompleteTransform(){ return _parentToWorldTransform*_transform; };
-    inline void setParentToWorldTransform(glm::mat4 M){ _parentToWorldTransform = M; };
+    inline void setParentToWorldTransform(glm::mat4 M);
     
     inline void setZDepth(int zDepth){ _zDepth = zDepth; };
     inline int getZDepth(){ return _zDepth; };

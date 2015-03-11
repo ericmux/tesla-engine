@@ -25,27 +25,33 @@ Node::~Node(){};
 
 void Node::scale(float s){
     _transform = glm::scale(_transform, glm::vec3(s));
+    updateChildTransforms();
 };
 
 void Node::scale(float sx, float sy, float sz){
     _transform = glm::scale(_transform, glm::vec3(sx,sy,sz));
+    updateChildTransforms();
 };
 
 void Node::scale(glm::vec3 s){
     _transform = glm::scale(_transform, s);
+    updateChildTransforms();
 };
 
 
 void Node::translate(glm::vec3 t){
     _transform = glm::translate(_transform, t);
+    updateChildTransforms();
 };
 
 void Node::rotate(float angle){
     _transform = glm::rotate(_transform, angle, glm::vec3(0.0f,0.0f,1.0f));
+    updateChildTransforms();
 };
 
 void Node::resetTransform(){
     _transform = glm::mat4();
+    updateChildTransforms();
 };
 
 void Node::addChild(Node *child){
@@ -129,6 +135,18 @@ RenderCommand Node::toRenderCommand(){
     cmd.bufferEBO = std::vector<GLuint>(idxs, idxs + sizeof(idxs)/sizeof(GLuint));
     
     return cmd;
+};
+
+
+void Node::updateChildTransforms(){
+    for(auto& child: _children)
+        child->setParentToWorldTransform(_parentToWorldTransform*_transform);
+};
+
+
+void Node::setParentToWorldTransform(glm::mat4 M){
+    _parentToWorldTransform = M;
+    updateChildTransforms();
 };
 
 
