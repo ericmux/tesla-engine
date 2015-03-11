@@ -10,11 +10,9 @@
 #define TeslaEngine_KeyEvent_h
 
 
-#include "IEvent.h"
-
 namespace tesla {
 
-class KeyEvent : public IEvent {
+class KeyEvent {
 public:
     int key;
     int scancode;

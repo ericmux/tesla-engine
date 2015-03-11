@@ -9,5 +9,9 @@
 #ifndef TeslaEngine_IKeyListener_h
 #define TeslaEngine_IKeyListener_h
 
+namespace tesla {
+  
+};
+
 
 #endif
